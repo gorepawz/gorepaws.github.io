@@ -1,0 +1,113 @@
+#musicplayer{
+    background:url(/img/bg/flowerswhite.gif); /* background color of player */
+    border:0px solid #e74492; /* border around player */
+    width: 100%; /* width of the player */
+    box-shadow: -1px -1.4px 1px inset rgba(255, 142, 198, 0.8), 1px 1.4px 1.5px inset rgba(255, 142, 198, 0.3);
+}
+
+.songtitle{
+    background-image:url("/img/tamabg.gif");
+    background-size: 150px;
+    padding:5px 0px; /* padding around song title */
+    font-family: 'mochiy';
+    font-size: 13px;
+    border-bottom:2px ridge #ff8ce6; /* border under song title */
+    display:block;
+    text-shadow: 0px 0px 3px rgba(255,255,255,1), 0px 0px 3px rgba(255,255,255,1), 0px 0px 3px rgba(255,255,255,1), 0px 0px 3px rgba(255,255,255,1);
+    box-shadow: -1px -1.4px 1px inset rgba(255, 142, 198, 0.8), 1px 1.4px 1.5px inset rgba(255, 142, 198, 0.3), 0px 1px 1.5px rgba(255, 142, 198, 0.6);
+}
+
+.controls{
+    font-size:18px !important; /* size of controls */
+    text-align:center;
+    width:100%;
+}
+
+.controls td{
+    padding:13px 5px 0px 5px; /* padding around controls */
+}
+
+.seeking{
+    display:flex;
+    justify-content: space-evenly;
+    padding:5px; /* padding around seeking bar */
+}
+
+.current-time{
+    padding-right:5px;
+    padding-top: 3px;
+}
+
+.total-duration{
+    padding-left:5px;
+    padding-top: 3px;
+}
+
+i.fas:hover{
+    cursor:help;
+}
+
+i.fas.fa-pause, i.fas.fa-play, i.fas.fa-forward, i.fas.fa-backward{
+    color:#7be0ff; /* color of controls */
+    cursor: url("/img/starcur.png"), auto;
+    filter: drop-shadow(2px 0 0.5px white) drop-shadow(0 2px 0.5px white) drop-shadow(-2px 0 0.5px white) drop-shadow(0 -3px 0.5px white) drop-shadow(-0px 1px 1px rgba(255, 142, 198, 0.8)) drop-shadow(-.1px -.1px 1px rgba(255, 142, 198, 0.4));
+}
+
+input[type=range] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    background-color:#fff; /* background color of seeking bar - make the color same as .seeking background color */
+}
+
+input[type=range]:focus {
+    outline: none;
+}
+
+/* settings for chrome browsers */
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 2px; /* thickness of seeking track */
+    cursor: inherit;
+    background: #b5f396; /* color of seeking track */
+    border : 2px ridge #ffaaf4;
+    border-radius: 15px;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    height: 10px; /* height of seeking square */
+    width: 10px; /* width of seeking square */
+    border-radius: 5px; /* change to 5px if you want a circle seeker */
+    background: #ff8ce6; /* color of seeker square */
+    cursor: grab;
+    border:none;
+    box-shadow: -1px -1.4px 1px inset rgba(219, 86, 197,0.8), 2px 3px 1.5px inset white, 0px 0px 2px rgba(219, 86, 197,0.5), 1px 1px 3px rgba(219, 86, 197,0.5);
+}
+
+input[type=range]::-webkit-slider-thumb:active {
+    cursor:grabbing
+}
+
+/* settings for firefox browsers */
+input[type=range]::-moz-range-track {
+    width: 100%;
+    height: 2px; /* thickness of seeking track */
+    cursor: inherit;
+    background: #b5f396; /* color of seeking track */
+    border : 2px ridge #ffaaf4;
+    border-radius: 15px;
+}
+
+input[type=range]::-moz-range-thumb {
+    height: 10px; /* height of seeking square */
+    width: 10px; /* width of seeking square */
+    border-radius: 5px; /* change to 5px if you want a circle seeker */
+    background: #ff8ce6; /* color of seeker square */
+    cursor: grab;
+    border:none;
+    box-shadow: -1px -1.4px 1px inset rgba(219, 86, 197,0.8), 2px 3px 1.5px inset white, 0px 0px 2px rgba(219, 86, 197,0.5), 1px 1px 3px rgba(219, 86, 197,0.5);
+}
+
+input[type=range]::-moz-range-thumb:active {
+    cursor:grabbing
+}

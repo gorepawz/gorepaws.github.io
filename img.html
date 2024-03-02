@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Images Layout</title>
+  <link rel="stylesheet" href="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.css">
+  <style>
+    #imageContainer {
+      width: 434px;
+      height: 208px;
+    }
+
+    .grid-item {
+      width: 100%;
+      margin-bottom: 5px;
+      display: block;
+      float: left;
+    }
+  </style>
+</head>
+<body>
+
+<div id="imageContainer" class="grid">
+  <div class="grid-item" id="mainImage"></div>
+  <div class="grid-item smallImage"></div>
+  <div class="grid-item smallImage"></div>
+</div>
+
+<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const contentArray = [
+    { src: '/img/ran/animal.jpg', ratio: 1 },
+    { src: '/img/ran/antipsychs.jpg', ratio: 1.672 },
+    { src: '/img/ran/argument.jpg', ratio: 1.167 },
+    { src: '/img/ran/bleh.jpg', ratio: 1 },
+    { src: '/img/ran/crake.png', ratio: 1 },
+    { src: '/img/ran/derpmurica.jpg', ratio: 1.333 },
+    { src: '/img/ran/donteat.jpg', ratio: 1.864 },
+    { src: '/img/ran/faggot.gif', ratio: 1.333 },
+    { src: '/img/ran/livingdead.jpg', ratio: 1 },
+    { src: '/img/ran/Lplus.jpg', ratio: 1.102 },
+    { src: '/img/ran/monster.jpg', ratio: 1 },
+    { src: '/img/ran/wonder.jpg', ratio: 0.786 },
+    // Add more image URLs and aspect ratios as needed
+  ];
+
+  const randomImages = contentArray.sort(() => Math.random() - 0.5).slice(0, 3);
+
+  const mainImageElement = document.getElementById('mainImage');
+  mainImageElement.style.backgroundImage = `url('${randomImages[0].src}')`;
+  mainImageElement.style.backgroundSize = 'cover';
+
+  const smallImageElements = document.querySelectorAll('.smallImage');
+  smallImageElements[0].style.backgroundImage = `url('${randomImages[1].src}')`;
+  smallImageElements[0].style.backgroundSize = 'contain';
+
+  smallImageElements[1].style.backgroundImage = `url('${randomImages[2].src}')`;
+  smallImageElements[1].style.backgroundSize = 'contain';
+
+  // Initialize masonry
+  var grid = document.querySelector('.grid');
+  var masonry = new Masonry(grid, {
+    itemSelector: '.grid-item',
+    columnWidth: '.grid-item',
+    gutter: 5,
+  });
+});
+</script>
+
+</body>
+</html>
