@@ -501,7 +501,6 @@ ul {
   list-style-type: disc; 
   list-style-position: inside;
   padding-left: 3px;
-  text-align-last: justify;
 }
 ol { 
   list-style-type: decimal; 
