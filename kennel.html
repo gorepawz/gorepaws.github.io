@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>snuffpuppy</title>
+    <link href="/kennel.css" rel="stylesheet" type="text/css" media="all">
+    <link rel="icon" type="image/x-icon" href="/img/angelico.png">
+    <meta name="robots" content="noindex, nofollow">
+  </head>
+<body>
+    
+<div class="container">
+  <div class="Cin">
+    <div class="header">
+      <img src="/img/ajpeek.png" class="aj">
+    </div>
+
+    <div id="L" class="hover-div" data-tooltip-content="learn more about the puppy who runs the website !!"></div>
+    <div id="M" class="hover-div" data-tooltip-content="my thoughts on what i've been playing, watching, and listening to !!"></div>
+    <div id="R" class="hover-div" data-tooltip-content="pages dedicated to all of my favorite things !!"></div>
+
+    <div id="tooltip" class="tooltip-target">T</div>
+
+    <div id="adbanner">
+      <marquee>
+        <img src="/img/ad/16.jpg"> <img src="/img/ad/23.jpg"> <img src="/img/ad/7.gif"> 
+        <img src="/img/ad/24.gif"> <img src="/img/ad/4.png"> <img src="/img/ad/17.jpg"> 
+        <img src="/img/ad/1.png"> <img src="/img/ad/2.png"> <img src="/img/ad/22.gif"> 
+        <img src="/img/ad/10.jpg"> <img src="/img/ad/27.jpg"> <img src="/img/ad/6.gif"> 
+        <img src="/img/ad/5.jpg"> <img src="/img/ad/20.gif"> <img src="/img/ad/21.gif"> 
+        <img src="/img/ad/19.jpg"> <img src="/img/ad/25.jpg"> <img src="/img/ad/11.jpg"> <img src="/img/ad/3.png"> <img src="/img/ad/26.jpg"> <img src="/img/ad/12.gif"> 
+        <img src="/img/ouppy.png">
+      </marquee>
+    </div>
+  </div>
+</div>
+
+<a href="/index.html" class="back"></a>
+
+<script>
+    // Array of frame URLs for the animated favicon
+    const frameUrls = [
+      '/img/puplove1.png',
+      '/img/puplove2.png',
+      '/img/puplove3.png',
+      '/img/puplove4.png',
+      '/img/puplove5.png',
+      '/img/puplove6.png',
+      '/img/puplove7.png',
+      // Add more frame URLs here
+];
+
+let currentFrameIndex = 0;
+
+function updateFavicon() {
+const newFaviconUrl = frameUrls[currentFrameIndex];
+const linkTag = document.querySelector("link[rel='icon']");
+
+linkTag.href = newFaviconUrl;
+
+currentFrameIndex = (currentFrameIndex + 1) % frameUrls.length;
+}
+
+// Start the animation
+setInterval(updateFavicon, 100); // Change interval as needed
+</script>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script>
+      // Initialize Tippy.js on the tooltip target element
+      const tooltip = tippy('#tooltip', {
+            content: '',
+            trigger: 'manual',
+            placement: 'bottom',
+            hideOnClick: false,
+            theme: 'tomato',
+            arrow: false,
+            allowHTML: true,
+            maxWidth: 'none',
+            offset: [0, 7],
+        });
+
+        // Get the instance of Tippy.js
+        const instance = tooltip[0];
+
+        // Function to show the tooltip with updated content
+        function showTooltip(event) {
+            const content = event.target.getAttribute('data-tooltip-content');
+            instance.setContent(content);
+            instance.show();
+        }
+
+        // Function to hide the tooltip
+        function hideTooltip() {
+            instance.hide();
+        }
+
+        // Add event listeners to the hover divs
+        document.querySelectorAll('.hover-div').forEach(div => {
+            div.addEventListener('mouseenter', showTooltip);
+            div.addEventListener('mouseleave', hideTooltip);
+        });
+</script>
+<script>
+  document.getElementById('L').addEventListener('click', function() {
+      window.location.href = '/about.html';
+  });
+
+  document.getElementById('M').addEventListener('click', function() {
+      window.location.href = '/medialog.html';
+  });
+
+  document.getElementById('R').addEventListener('click', function() {
+      window.location.href = '/shrines.html';
+  });
+</script>
+
+</body>
+</html>

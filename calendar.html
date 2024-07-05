@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar</title>
+</head>
+<body>
+    <div class="calendar-container">
+        <div class="calendar-header">
+            <span id="month-year"></span>
+        </div>
+        <div id="calendar"></div>
+    </div>
+
+    <script>
+        const specialDates = {
+    '1-1': 'new year\'s',
+    '2-14': 'valentine\'s',
+    '3-17': 'st. patrick\'s day',
+    '4-1': 'april fool\'s day',
+    '7-4': '4th of july',
+    '12-25': 'gristmas',
+    '1-25': 'tu bi\'shvat',
+    '3-23': 'purim',
+    '4-23': 'pesach begins',
+    '4-30': 'pesach ends',
+    '5-12': 'lag ba\'mer',
+    '6-1': 'shavuot begins',
+    '6-2': 'shavuot ends',
+    '8-13': 'tisha b\'av',
+    '9-3': 'rosh Hashanah begins',
+    '9-5': 'rosh Hashanah ends',
+    '9-12': 'yom kippur',
+    '9-17': 'sukkot begins',
+    '9-24': 'sukkot ends',
+    '9-25': 'shemini Atzeret',
+    '9-26': 'simchat torah',
+    '12-25': 'chanukah begins',
+    '1-1-2025': 'chanukah ends',
+    '2-2': 'imbolc',
+    '3-20': 'ostara',
+    '5-1': 'beltane',
+    '6-21': 'litha',
+    '8-1': 'lammas',
+    '9-23': 'mabon',
+    '10-31': 'samhain',
+    '12-21': 'yule'
+    // Add other special dates here in 'month-day': 'Event Name' format
+};
+
+function createCalendar(year, month) {
+    const calendar = document.getElementById('calendar');
+    calendar.innerHTML = ''; // Clear previous calendar
+
+    const monthYear = document.getElementById('month-year');
+    const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    monthYear.innerText = `${monthNames[month]} ${year}`;
+
+    const currentDate = new Date();
+    const today = currentDate.getDate();
+    const currentMonth = currentDate.getMonth();
+    const currentYear = currentDate.getFullYear();
+
+    const firstDay = new Date(year, month, 1).getDay();
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+    const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    dayNames.forEach(day => {
+        const dayName = document.createElement('div');
+        dayName.classList.add('day-name');
+        dayName.innerText = day;
+        calendar.appendChild(dayName);
+    });
+
+    // Create empty cells for days before the first day of the month
+    for (let i = 0; i < firstDay; i++) {
+        const emptyCell = document.createElement('div');
+        calendar.appendChild(emptyCell);
+    }
+
+    for (let day = 1; day <= daysInMonth; day++) {
+        const cell = document.createElement('div');
+        cell.classList.add('day');
+        cell.innerText = day;
+
+        if (year === currentYear && month === currentMonth && day === today) {
+            cell.classList.add('current-day');
+        }
+
+        const specialDateKey = `${month + 1}-${day}`;
+        if (specialDates[specialDateKey]) {
+            cell.classList.add('special-day');
+            cell.setAttribute('data-tooltip', specialDates[specialDateKey]);
+        }
+
+        calendar.appendChild(cell);
+    }
+}
+
+const now = new Date();
+createCalendar(now.getFullYear(), now.getMonth());
+
+    </script>
+</body>
+</html>
+
+
+<style>
+@font-face{
+  font-family: 'mochiy';
+  src: url("/MochiyPopOne-Regular.ttf");
+}
+
+* {
+    cursor: url("/img/lilycur2.png"), auto;
+}
+
+.calendar-container {
+    width: 167px;
+    height: 208px;
+    background-color: #fff;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-shadow: -1px -1.4px 1px inset rgba(99, 148, 226, 0.8);
+    font-family: MS UI Gothic;
+    color: #45506d;
+}
+
+.calendar-header {
+    text-align: center;
+    padding: 1px 5px 4px 5px;
+    background: linear-gradient(0deg, rgba(226,241,255,1) 0%, rgba(214,231,254,1) 41%, rgba(255,255,255,1) 53%, rgba(226,241,255,1) 100%);
+    font-family: 'mochiy';
+    border-bottom: 1px solid #545f7c96;
+    box-shadow: -1px -1.4px 1px inset rgba(147, 164, 194, 0.8), 2px 3px 1.5px inset white, 0px 0px 2px rgba(159, 176, 207,0.5), 1px 1px 3px rgba(159, 176, 207, 0.5);
+    text-shadow: 0px 0px 4px rgba(255,255,255,1), 0px 0px 6px rgba(255,255,255,1), 0px 0px 10px rgba(255,255,255,.7), 0px 0px 12px rgba(255,255,255,.5);
+    color: #7992b9;
+}
+
+#month-year {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+#calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    overflow: hidden;
+    background-color: #fff;
+}
+
+.day, .special-day, .current-day, .day-name {
+    width: 23px;
+    height: 29px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #545f7c96;
+    position: relative;
+    background-color: #fff;
+    font-size: 10px;
+    margin-top: -1px;
+    margin-left: -1px;
+}
+
+.day {
+    color: #45506dc7;
+}
+
+.current-day {
+    background: linear-gradient(0deg, rgba(226,241,255,1) 0%, rgba(214,231,254,1) 41%, rgba(255,255,255,1) 53%, rgba(226,241,255,1) 100%);
+    border-bottom: 1px solid #545f7c96;
+    box-shadow: -1px -1.4px 1px inset rgba(161, 179, 209, 0.8), 2px 3px 1.5px inset white, 0px 0px 2px rgba(159, 176, 207,0.5);
+    text-shadow: 0px 0px 4px rgba(255,255,255,1), 0px 0px 6px rgba(255,255,255,1), 0px 0px 10px rgba(255,255,255,.7), 0px 0px 12px rgba(255,255,255,.5);
+    color: #7992b9;
+    font-weight: bold;
+}
+
+.special-day {
+    background: linear-gradient(0deg, rgb(234, 248, 224) 0%, rgb(198, 223, 194) 41%, rgba(255,255,255,1) 53%, rgb(234, 248, 224) 100%);
+    border-bottom: 1px solid #545f7c96;
+    box-shadow: -1px -1.4px 1px inset rgba(160, 187, 156, 0.8), 2px 3px 1.5px inset white, 0px 0px 2px rgba(159, 176, 207,0.5);
+    text-shadow: 0px 0px 4px rgba(255,255,255,1), 0px 0px 6px rgba(255,255,255,1), 0px 0px 10px rgba(255,255,255,.7), 0px 0px 12px rgba(255,255,255,.5);
+    color: #87ad82;
+    font-weight: bold;
+}
+
+.special-day:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: #fff;
+    padding: 5px;
+    border-radius: 3px;
+    white-space: nowrap;
+    z-index: 1;
+    font-size: 10px;
+    text-shadow: 0px 0px 0px black;
+}
+
+.day-name {
+    font-size: 10px;
+    font-weight: bold;
+    color: #45506dcb;
+}
+</style>

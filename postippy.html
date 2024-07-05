@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tippy.js Multiple Tooltips Example</title>
+    <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+    <style>
+        .tooltip-target {
+            position: fixed; /* Ensure the tooltip stays in one place */
+            top: 50px;
+            left: 50px;
+            display: none; /* Hide the element initially */
+        }
+        .hover-div {
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid black;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1" class="hover-div" data-tooltip-content="DIVE NUMBER ONE">Hover over me (Div 1)</div>
+    <div id="div2" class="hover-div" data-tooltip-content="NUMBER TWOOO">Hover over me (Div 2)</div>
+    <div id="div3" class="hover-div" data-tooltip-content="AND THREEE">Hover over me (Div 3)</div>
+
+    <div id="tooltip" class="tooltip-target">Tooltip Content</div>
+
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+    <script>
+        // Initialize Tippy.js on the tooltip target element
+        const tooltip = tippy('#tooltip', {
+            content: '',
+            trigger: 'manual',
+            placement: 'right',
+            hideOnClick: false,
+        });
+
+        // Get the instance of Tippy.js
+        const instance = tooltip[0];
+
+        // Function to show the tooltip with updated content
+        function showTooltip(event) {
+            const content = event.target.getAttribute('data-tooltip-content');
+            instance.setContent(content);
+            instance.show();
+        }
+
+        // Function to hide the tooltip
+        function hideTooltip() {
+            instance.hide();
+        }
+
+        // Add event listeners to the hover divs
+        document.querySelectorAll('.hover-div').forEach(div => {
+            div.addEventListener('mouseenter', showTooltip);
+            div.addEventListener('mouseleave', hideTooltip);
+        });
+    </script>
+</body>
+</html>

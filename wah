@@ -1,0 +1,40 @@
+<h2>Basic Information</h2>
+
+<p>Name: ${random_PREFIX}${random_SUFFIX}
+<br>Gender: ${random_GENDER}
+<br>Sexuality: ${random_SEXUALITY}
+<br>Age: ${random_AGE} moons old
+<br>Clan: ${random_CLAN} clan
+<br>Rank: ${random_RANK}
+<br>Personality: ${random_PERSONALITY}
+
+
+
+<h2>Appearance</h2>
+
+<p>Your cat has a ${random_BUILD} build. Their fur is a ${random_FURCOLOR} ${random_FUR} ${random_PAT}. It is also ${random_FURLENGTH}. They have ${random_EYE[0]} left eye and ${random_EYE[1]} right eye. ${random_WHITE} Along with its previous pattern, your cat's body also has !!${random_FURCOLOR} $!!{random_FUR} !!${random_PAT} on their ${random_FURPLACE}. Their face is very ${random_FACE}. ${random_OPTIONAL} Their ears are ${random_EARS}, and their eyes are ${random_PUPILS}. Their tail is very ${random_TAIL} and it is ${random_TAILLONG}.
+
+${random_SCARS}
+
+
+
+<h2>Personality</h2>
+
+<p>${random_PREFIX}${random_SUFFIX} is very ${random_POSITIVE}, but they have a habit of being ${random_NEGATIVE}. They're also a little !!${random_PERSONALITY}, and other cats know them to be ${random_PERSONALITY}.</p>
+
+
+
+<h2>History</h2>
+
+<p>${random_CLAN} clan lives near ${random_PLACE}. Common prey: ${random_PREY[0]}, ${random_PREY[1]}, and ${random_PREY[2]}.</p>
+<p>This clan lives in ${random_CAMP}. ${random_SPECIALPLACE}.</p>
+
+
+
+<h2>Family</h2>
+
+<p>Parents: !!${random_PREFIX2}${random_SUFFIX2} and ${random_PREFIX2}${random_SUFFIX2}
+<br>Sister(s): ${random_PREFIX2}${random_SUFFIX2}, ${random_PREFIX2}${random_SUFFIX2}, ${random_PREFIX2}${random_SUFFIX2}
+<br>Brother(s): ${random_PREFIX2}${random_SUFFIX2}, ${random_PREFIX2}${random_SUFFIX2}, ${random_PREFIX2}${random_SUFFIX2}</p>
+
+<p>${random_EVENT}, ${random_RESULT}. !!${random_EVENT}. ${random_DEATH}.</p>
